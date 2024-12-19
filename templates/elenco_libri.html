@@ -1,0 +1,36 @@
+{% extends "form.html" %}
+
+{% block content %}
+<h1 class="mb-4">Elenco dei Libri</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titolo</th>
+            <th>Autore</th>
+            <th>Casa editrice</th>
+            <th>Isbn</th>
+            <th>Categoria</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for libro in libri %}
+        <tr>
+            <td>{{ libro.id }}</td>
+            <td>{{ libro.titolo }}</td>
+            <td>{{ libro.autore }}</td>
+            <td>{{ libro.casa_editrice }}</td>
+            <td>{{ libro.isbn }}</td>
+            <td>{{ libro.categoria }}</td>
+            <td>
+                <a href="/api/libro/{{ libro.id }}" class="btn btn-primary btn-sm"><i
+                        class="fas fa-eye"></i>Dettagli</a>
+                <a href="/api/libro/{{ libro.id }}/edit" class="btn btn-warning btn-sm">Modifica</a>
+                <a href="#" class="btn btn-danger btn-sm" onclick="eliminaLibro({{ libro.id }})"><i
+                        class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+</table>
+{% endblock %}

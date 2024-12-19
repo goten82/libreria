@@ -1,0 +1,31 @@
+{% extends "form.html" %}
+
+{% block content %}
+<h1>Modifica Libro</h1>
+<form action="/api/update_libro/{{ libro.id }}" method="POST" class="mt-4">
+    <div class="mb-3">
+        <label for="titolo" class="form-label">Titolo</label>
+        <input type="text" class="form-control" id="titolo" name="titolo" value="{{ libro.titolo }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="autore" class="form-label">Autore</label>
+        <input type="text" class="form-control" id="autore" name="autore" value="{{ libro.autore }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="casa_editrice" class="form-label">Casa editrice</label>
+        <input type="text" class="form-control" id="casa_editrice" name="casa_editrice"
+            value="{{ libro.casa_editrice }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" value="{{ libro.isbn }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="categoria" class="form-label">Categoria</label>
+        <input type="text" class="form-control" id="categoria" name="categoria" value="{{ libro.categoria }}" >
+    </div>
+
+    <button type="submit" class="btn btn-success">Salva</button>
+    <a href="/api/libri" class="btn btn-secondary">Annulla</a>
+</form>
+{% endblock %}

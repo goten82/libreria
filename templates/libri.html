@@ -1,0 +1,67 @@
+{% extends "form.html" %}
+
+{% block content %}
+<h1 class="mb-4">Gestione dei Libri</h1>
+
+<form action="/api/add_libro" method="POST" class="mt-4">
+    <div class="mb-3">
+        <label for="titolo" class="form-label">Titolo</label>
+        <input type="text" class="form-control" id="titolo" name="titolo" required>
+    </div>
+    <div class="mb-3">
+        <label for="autore" class="form-label">Autore</label>
+        <input type="text" class="form-control" id="autore" name="autore" required>
+    </div>
+    <div class="mb-3">
+        <label for="casa_editrice" class="form-label">Casa editrice</label>
+        <input type="text" class="form-control" id="casa_editrice" name="casa_editrice" required>
+    </div>
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" required>
+    </div>
+    <div class="mb-3">
+        <label for="categoria" class="form-label">Categoria</label>
+        <input type="text" class="form-control" id="categoria" name="categoria">
+    </div>
+
+    <button type="submit" class="btn btn-success">Salva</button>
+    <a href="/api/libri" class="btn btn-secondary">Annulla</a>
+</form>
+
+<!-- <div class="container mt-4" id="form_inserisci">
+    <fieldset class="">
+        <legend>Inserimento</legend>
+        <div id="tab1" class="mb-5">
+            <div id="Inserimento">
+                <form action="/add_libro" method="post">
+                    <div class="in-form">
+                        <label for="titolo">Titolo: </label>
+                        <input type="text" id="titolo" name="titolo" required>
+                    </div>
+                    <div class="in-form">
+                        <label for="autore">Autore: </label>
+                        <input type="text" name="autore" id="autore" required>
+                    </div>
+                    <div class="in-form">
+                        <label for="editrice">Casa editrice:</label>
+                        <input type="text" name="casa_editrice" id="editrice" required>
+                    </div>
+                    <div class="in-form">
+                        <label for="isbn">ISBN: </label>
+                        <input type="text" name="isbn" id="isbn" required>
+                    </div>
+                    <div class="in-form">
+                        <label for="categoria">Categoria:</label>
+                        <input type="text" name="categoria" id="categoria">
+                    </div>
+                </form>
+            </div>
+            <div id="messageInsert"></div>
+            <a class="btn btn-primary" id="inserisci" href="#">Inserisci libro</a>
+            <a class="btn btn-primary" id="chiudi" href="#">Chiudi</a>
+        </div>
+    </fieldset> -->
+
+<!-- </div> -->
+{% endblock %}
