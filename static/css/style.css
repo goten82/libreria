@@ -6,6 +6,43 @@
 
 }
 
+body {
+    background: linear-gradient(to right, #f4e4c1, #fff, #f4e4c1);
+    /* Simula le pagine del libro */
+    color: #333;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 nav.navbar {
-    background-color: var(--btn-primary) !important;
+    background-color: var(--btn-primary);
+}
+
+.book {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    /* Colore della pagina */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* Effetto ombra */
+    border: 1px solid #ccc;
+}
+
+.book::before, .book::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #f4e4c1;
+    z-index: -1;
+}
+
+.book::before {
+    left: 0;
+    transform: skewY(-2deg);
+}
+
+.book::after {
+    right: 0;
+    transform: skewY(2deg);
 }

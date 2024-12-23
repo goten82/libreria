@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
-from models.libri import db,Libri
+from models.libri import db
 from routes.libri import libri_bp
 
 app = Flask(__name__)
@@ -29,6 +29,10 @@ def libri():
 @app.route('/utenti')
 def utenti():
     return render_template('utenti.html')
+
+@app.route('/cerca')
+def cerca():
+    return render_template('cerca.html')
 
 # Rotta di base per testare il server
 @app.route('/')
