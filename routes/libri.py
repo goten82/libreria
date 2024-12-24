@@ -2,8 +2,6 @@ from flask import Blueprint, jsonify, request,render_template,redirect,url_for,f
 from models.libri import db,Libri
 from services.libri_service import get_all_libri,add_libro,get_libro_by_autore,get_libro_by_titolo,update_libro,get_by_id,delete_libro
 
-LIBRO_NOT_FOUND = "Libro non trovato!"
-
 libri_bp = Blueprint('libri',__name__)
 
 @libri_bp.route('/libri', methods=['GET'])
@@ -35,7 +33,7 @@ def get_libro_by_id(libro_id):
 
 @libri_bp.route('/libro',methods=['GET'])
 def cerca():
-    to_research =request.args['ricerca']
+    to_research = request.args['ricerca']
     tipoRicerca = request.args['flexRadioDefault']
     
     if(tipoRicerca=='titolo'):

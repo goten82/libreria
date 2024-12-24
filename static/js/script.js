@@ -47,3 +47,19 @@ class Libri {
         this.categoria = categoria;
     }
 }
+
+
+function eliminaLibro(id) {
+    if (confirm("Sei sicuro di voler eliminare questo libro?")) {
+        fetch(`/api/delete_libro/${id}`, {
+            method: 'DELETE'
+        }).then(response => {
+            if (response.ok) {
+                alert("Libro eliminato con successo!");
+                location.reload(); // Ricarica la pagina
+            } else {
+                alert("Errore durante l'eliminazione del libro.");
+            }
+        });
+    }
+}
