@@ -4,6 +4,9 @@ from models.libri import db,Libri
 def get_all_libri():
     return Libri.query.all()
 
+def get_by_id(id):
+    return Libri.query.get_or_404(id)
+
 
 #inserimento libro
 def add_libro():
@@ -25,3 +28,26 @@ def get_libro_by_titolo(titolo):
 
 def get_libro_by_autore(autore):
     return Libri.query.filter(Libri.autore.ilike(f"%{autore}%")).all()
+
+def update_libro(id):
+    libro = get_by_id(id) # Cerca l'utente per ID
+
+     # Aggiorna i campi dell'utente
+    
+    libro.titolo=request.form['titolo']  # type: ignore
+    libro.autore=request.form['autore']# type: ignore
+    libro.casa_editrice=request.form['casa_editrice'] # type: ignore
+    libro.isbn=request.form['isbn'] # type: ignore
+    libro.categoria=request.form['categoria'] # type: ignore
+    
+    db.session.commit()  # Salva le modifiche nel database
+    flash("Libro aggiornato con successo!", "success")
+    return redirect(url_for('libri.get_libri'))
+
+def delete_libro(id):
+    libro = get_by_id(id)
+
+    db.session.delete(libro)  # Elimina l'utente dal database
+    db.session.commit()
+
+    return jsonify({"message": "Libro eliminato con successo!"})
