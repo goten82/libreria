@@ -11,6 +11,7 @@ class Libri(db.Model):
     casa_editrice = db.Column(db.String(50))
     isbn = db.Column(db.String(13))
     categoria = db.Column(db.String(50))
+    posizione = db.Column(db.String(20))
 
     def __repr__(self):
         return f'<Libri {self.titolo} di  {self.autore}>'
@@ -22,5 +23,6 @@ class Libri(db.Model):
             "autore": self.autore,
             "casa_editrice": self.casa_editrice,
             "isbn":self.isbn,
-            "categoria": self.categoria
+            "categoria": self.categoria,
+            "posizione":self.posizione
         }

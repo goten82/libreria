@@ -11,6 +11,7 @@
             <th>Casa editrice</th>
             <th>Isbn</th>
             <th>Categoria</th>
+            <th>Posizione</th>
             <th>Azioni</th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
             <td>{{ libro.casa_editrice }}</td>
             <td>{{ libro.isbn }}</td>
             <td>{{ libro.categoria }}</td>
+            <td>{{ libro.posizione }}</td>
             <td>
                 <a href="/api/libro/{{ libro.id }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i>
                     Dettagli </a>

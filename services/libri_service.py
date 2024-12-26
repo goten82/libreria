@@ -16,7 +16,8 @@ def add_libro():
         autore=data['autore'], # type: ignore
         casa_editrice=data['casa_editrice'], # type: ignore
         isbn=data['isbn'], # type: ignore
-        categoria=data['categoria'] # type: ignore
+        categoria=data['categoria'], # type: ignore
+        posizione=data['posizione'] #type: ignore
     )    
     db.session.add(new_libro)
     db.session.commit()
@@ -39,6 +40,7 @@ def update_libro(id):
     libro.casa_editrice=request.form['casa_editrice'] # type: ignore
     libro.isbn=request.form['isbn'] # type: ignore
     libro.categoria=request.form['categoria'] # type: ignore
+    libro.posizione=request.form['posizione']
     
     db.session.commit()  # Salva le modifiche nel database
     flash("Libro aggiornato con successo!", "success")
