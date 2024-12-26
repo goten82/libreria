@@ -48,7 +48,6 @@ class Libri {
     }
 }
 
-
 function eliminaLibro(id) {
     if (confirm("Sei sicuro di voler eliminare questo libro?")) {
         fetch(`/api/delete_libro/${id}`, {

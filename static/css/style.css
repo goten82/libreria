@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #f4e4c1, #fff, #f4e4c1);
+    background: linear-gradient(to right, #cfe3f7, #fff, #b1d4f0);
     /* Simula le pagine del libro */
     color: #333;
     font-family: 'Times New Roman', Times, serif;
@@ -33,7 +33,7 @@ nav.navbar {
     position: absolute;
     width: 50%;
     height: 100%;
-    background: #f4e4c1;
+    background: #c1e4f4;
     z-index: -1;
 }
 
