@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request,render_template,redirect,url_for,flash
-from models.libri import db,Libri
-from services.libri_service import get_all_libri,add_libro,get_libro_by_autore,get_libro_by_titolo,update_libro,get_by_id,delete_libro
+from flask import Blueprint, request,render_template
+
+from services.libri_service import get_all_libri,add_libro,get_libro_by_titolo,update_libro,get_by_id,delete_libro
 
 libri_bp = Blueprint('libri',__name__)
 
@@ -38,8 +38,8 @@ def cerca():
     
     if(tipoRicerca=='titolo'):
         libri = get_libro_by_titolo(to_research)
-    else:
-        libri = get_libro_by_autore(to_research)
+    # else:
+    #     libri = get_libro_by_autore(to_research)
     
     return render_template('elenco_libri.html',libri=libri)
 

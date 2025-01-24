@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify, request,render_template,redirect,url_for,flash
-from models.libri import db,Libri
+from flask import jsonify, request,redirect,url_for,flash
+from models.models import Autori, Libri,db
 
 def get_all_libri():
     return Libri.query.all()
@@ -11,24 +11,43 @@ def get_by_id(id):
 #inserimento libro
 def add_libro():
     data = request.form
+    titolo = data['titolo']
+    autore_id = data['autore_id']
+    casa_editrice = data['casa_editrice']
+    isbn = data['isbn']
+    categoria = data['categoria']
+    posizione = data['posizione'] 
+    nome = data['nome']
+    cognome  = data['cognome']
+
+    if nome and cognome:
+        autore = Autori.query.filter_by(nome=nome,cognome=cognome).first()
+        if not autore:
+            autore = Autori(nome=nome,cognome=cognome)# type: ignore
+            db.session.add(autore)
+            db.session.commit()
+        autore_id = autore.id
+
     new_libro = Libri(
-        titolo=data['titolo'],  # type: ignore
-        autore=data['autore'], # type: ignore
-        casa_editrice=data['casa_editrice'], # type: ignore
-        isbn=data['isbn'], # type: ignore
-        categoria=data['categoria'], # type: ignore
-        posizione=data['posizione'] #type: ignore
+        titolo=titolo, # type: ignore
+        autore_id=autore_id, # type: ignore
+        casa_editrice=casa_editrice, # type: ignore
+        isbn=isbn, # type: ignore
+        categoria=categoria, # type: ignore
+        posizione=posizione # type: ignore  
     )    
     db.session.add(new_libro)
     db.session.commit()
+
+    
     flash("Libro inserito con successo!", "success")
     return redirect(url_for('libri.get_libri'))
 
 def get_libro_by_titolo(titolo):
     return Libri.query.filter(Libri.titolo.ilike(f"%{titolo}%")).all()
 
-def get_libro_by_autore(autore):
-    return Libri.query.filter(Libri.autore.ilike(f"%{autore}%")).all()
+# def get_libro_by_autore(autore):
+#     return Libri.query.filter(Libri.autore.ilike(f"%{autore}%")).all()
 
 def update_libro(id):
     libro = get_by_id(id) # Cerca l'utente per ID

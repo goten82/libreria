@@ -10,7 +10,17 @@
     </div>
     <div class="mb-3">
         <label for="autore" class="form-label">Autore</label>
-        <input type="text" class="form-control" id="autore" name="autore" required>
+        <select class="form-control" id="autore" name="autore_id">
+            <option value="" selected>Scegli un autore esistente</option>
+            {% for author in autori %}
+            <option value="{{ author.id }}">{{ author.nome }} {{author.cognome}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="new_author" class="form-label">O aggiungi un nuovo autore</label>
+        <input type="text" class="form-control" id="new_author" name="nome" placeholder="Nome...">
+        <input type="text" class="form-control" id="new_author" name="cognome" placeholder="Cognome...">
     </div>
     <div class="mb-3">
         <label for="casa_editrice" class="form-label">Casa editrice</label>

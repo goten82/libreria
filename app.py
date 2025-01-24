@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 import os
-from models.libri import db
+from models.models import db
 from routes.libri import libri_bp
+from services.autori_service import get_all_autori
 
 app = Flask(__name__)
 
@@ -23,7 +24,8 @@ def form():
 
 @app.route('/libri')
 def libri():
-    return render_template('libri.html')
+    autori = get_all_autori()
+    return render_template('libri.html', autori=autori)
 
 @app.route('/utenti')
 def utenti():
