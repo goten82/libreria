@@ -55,7 +55,7 @@ def update_libro(id):
      # Aggiorna i campi dell'utente
     
     libro.titolo=request.form['titolo']  # type: ignore
-    libro.autore=request.form['autore']# type: ignore
+    libro.autore_id=request.form['autore_hidden']# type: ignore
     libro.casa_editrice=request.form['casa_editrice'] # type: ignore
     libro.isbn=request.form['isbn'] # type: ignore
     libro.categoria=request.form['categoria'] # type: ignore

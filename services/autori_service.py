@@ -4,3 +4,5 @@ from models.models import Autori
 def get_all_autori():
     return Autori.query.all()
 
+def get_by_nominativo(nome, cognome):
+    pass
