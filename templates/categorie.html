@@ -1,0 +1,37 @@
+{% extends "form.html" %}
+
+{% block content %}
+
+<h1 class="mb-4">Categorie</h1>
+
+<fieldset class="border p-4 rounded">
+    <legend class="float-none w-auto px-2 text-primary">Inserisci categoria</legend>
+    <form action="/api/add_categoria" method="POST" class="mt-4">
+        <input class="form-control" type="text" name="categoria" id="categoria">
+        <button type="submit" class="btn btn-primary">Salva</button>
+    </form>
+</fieldset>
+<fieldset class="border p-4 rounded">
+    <legend class="float-none w-auto px-2 text-primary">Elenco categorie</legend>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorie %}
+            <tr>
+                <td>{{ categoria.categoria }}</td>
+                <td>
+                    <a href="{{ url_for('categorie.elimina_categoria', id=categoria.id) }}"
+                        class="btn btn-danger btn-sm">Elimina</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</fieldset>
+
+{% endblock %}

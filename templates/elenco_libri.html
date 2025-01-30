@@ -26,7 +26,7 @@
                 <td>{{ libro.autore.nome}} {{ libro.autore.cognome}}</td>
                 <td>{{ libro.casa_editrice }}</td>
                 <td>{{ libro.isbn }}</td>
-                <td>{{ libro.categoria }}</td>
+                <td>{{ libro.categoria.categoria }}</td>
                 <td>{{ libro.posizione }}</td>
                 <td>
                     <a href="/api/libro/{{ libro.id }}" class="btn btn-primary btn-sm" title="Dettagli"><i
