@@ -1,5 +1,5 @@
 from flask import jsonify, request,redirect,url_for,flash
-from models.models import Autori, Libri,db
+from models.models import Autori, Libri,Categorie,db
 
 def get_all_libri():
     return Libri.query.all()
