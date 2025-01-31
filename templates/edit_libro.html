@@ -11,7 +11,7 @@
         <label for="autore" class="form-label">Autore</label>
         <input type="text" class="form-control" id="autore" name="autore"
             value="{{ libro.autore.nome}} {{ libro.autore.cognome}}" required>
-            <input type="hidden" name="autore_hidden" value="{{ libro.autore_id}}">
+        <input type="hidden" name="autore_hidden" value="{{ libro.autore_id}}">
     </div>
     <div class="mb-3">
         <label for="casa_editrice" class="form-label">Casa editrice</label>
@@ -24,11 +24,13 @@
     </div>
     <div class="mb-3">
         <label for="categoria" class="form-label">Categoria</label>
-        <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example"></select>
-        {% for categoria in categorie %}
-        <optgroup value="{{categoria.id}}">{{categoria.categoria}}</option>
-        {% endfor %}
+        <select class="form-select" id="categoria" name="categoria_id" required>
+            {% for categoria in categorie %}
+            <option value="{{ categoria.id }}" {% if categoria.id==libro.categoria_id %}selected{% endif %}>{{
+                categoria.categoria }}</option>
+            {% endfor %}
         </select>
+
     </div>
     <div class="mb-3">
         <label for="posizione" class="form-label">Posizione</label>

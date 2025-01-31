@@ -16,6 +16,7 @@ def add_libro():
     casa_editrice = data['casa_editrice']
     isbn = data['isbn']
     categoria = data['categoria']
+    categoria_id = data['categoria_id']
     posizione = data['posizione'] 
     nome = data['nome']
     cognome  = data['cognome']
@@ -28,12 +29,20 @@ def add_libro():
             db.session.commit()
         autore_id = autore.id
 
+    if categoria:
+        _categoria = Categorie.query.filter_by(categoria=categoria).first()
+        if not _categoria:
+            new_categoria = Categorie(categoria=categoria)# type: ignore
+            db.session.add(new_categoria)
+            db.session.commit()
+        categoria_id = new_categoria.id
+
     new_libro = Libri(
         titolo=titolo, # type: ignore
         autore_id=autore_id, # type: ignore
         casa_editrice=casa_editrice, # type: ignore
         isbn=isbn, # type: ignore
-        categoria=categoria, # type: ignore
+        categoria_id=categoria_id, # type: ignore
         posizione=posizione # type: ignore  
     )    
     db.session.add(new_libro)
@@ -58,7 +67,7 @@ def update_libro(id):
     libro.autore_id=request.form['autore_hidden']# type: ignore
     libro.casa_editrice=request.form['casa_editrice'] # type: ignore
     libro.isbn=request.form['isbn'] # type: ignore
-    libro.categoria=request.form['categoria'] # type: ignore
+    libro.categoria_id=request.form['categoria_id'] # type: ignore
     libro.posizione=request.form['posizione']
     
     db.session.commit()  # Salva le modifiche nel database

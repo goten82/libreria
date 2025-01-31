@@ -32,11 +32,17 @@
     </div>
     <div class="mb-3">
         <label for="categoria" class="form-label">Categoria</label>
-        <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example"></select>
-        {% for categoria in categorie %}
-        <optgroup value="{{categoria.id}}">{{categoria.categoria}}</option>
-        {% endfor %}
+        <select class="form-select" id="categoria" name="categoria_id">
+            <option value="">Scegli categoria esistente</option>
+            {% for categoria in categorie %}
+            <option value="{{ categoria.id }}" {% if categoria.id==categoria_id %}selected{% endif %}>{{
+                categoria.categoria }}</option>
+            {% endfor %}
         </select>
+        <div class="mb-3">
+            <label for="new_author" class="form-label">O aggiungi una nuova</label>
+            <input type="text" class="form-control" id="new_categoria" name="categoria" placeholder="Categoria...">
+        </div>
         <!-- <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
             <option selected value="">Effettuare una scelta...</option>
             <option value="Narrativa">Narrativa</option>
