@@ -1,6 +1,7 @@
 from flask import Blueprint, request,render_template
 
 from services.libri_service import get_all_libri,add_libro,get_libro_by_titolo,update_libro,get_by_id,delete_libro
+from services.categorie_service import get_all_categorie
 
 libri_bp = Blueprint('libri',__name__)
 
@@ -19,7 +20,9 @@ def aggiungi_libro():
 #cerca libro per id e ritorna la pagina di modifica
 def edit_libro(libro_id):
     libro = get_by_id(libro_id)  # Recupera il libro dal database
-    return render_template('edit_libro.html', libro=libro)
+    categorie = get_all_categorie()
+    
+    return render_template('edit_libro.html', libro=libro, categorie=categorie)
   
 
 @libri_bp.route('/libro/<int:libro_id>', methods=['GET'])
