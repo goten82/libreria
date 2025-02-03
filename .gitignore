@@ -11,3 +11,5 @@ routes/__pycache__/libri.cpython-311.pyc
 services/__pycache__/libri_service.cpython-311.pyc
 routes/__pycache__/libri.cpython-311.pyc
 services/__pycache__/libri_service.cpython-311.pyc
+routes/__pycache__/categorie.cpython-311.pyc
+services/__pycache__/categorie_service.cpython-311.pyc
