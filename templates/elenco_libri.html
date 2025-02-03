@@ -14,7 +14,7 @@
                 <th>Casa editrice</th>
                 <th>Isbn</th>
                 <th>Categoria</th>
-                <th>Posizione</th>
+                <!-- <th>Posizione</th> -->
                 <th>Azioni</th>
             </tr>
         </thead>
@@ -22,15 +22,13 @@
             {% for libro in libri %}
             <tr>
                 <!-- <td>{{ libro.id }}</td> -->
-                <td>{{ libro.titolo }}</td>
+                <td><a href="/api/libro/{{ libro.id }}">{{ libro.titolo }}</a></td>
                 <td>{{ libro.autore.nome}} {{ libro.autore.cognome}}</td>
                 <td>{{ libro.casa_editrice }}</td>
                 <td>{{ libro.isbn }}</td>
                 <td>{{ libro.categoria.categoria }}</td>
-                <td>{{ libro.posizione }}</td>
+                <!-- <td>{{ libro.posizione }}</td> -->
                 <td>
-                    <a href="/api/libro/{{ libro.id }}" class="btn btn-primary btn-sm" title="Dettagli"><i
-                            class="fa-solid fa-eye"></i></a>
                     <a href="/api/libro/{{ libro.id }}/edit" class="btn btn-primary btn-sm" title="Modifica"><i
                             class="fa-solid fa-pen-to-square"></i> </a>
                     <a href="#" class="btn btn-danger btn-sm" onclick="eliminaLibro({{ libro.id }})" title="Elimina"><i
