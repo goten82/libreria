@@ -20,6 +20,7 @@ def add_libro():
     posizione = data['posizione'] 
     nome = data['nome']
     cognome  = data['cognome']
+    prefazione = data['prefazione']
 
     if nome and cognome:
         autore = Autori.query.filter_by(nome=nome,cognome=cognome).first()
@@ -43,7 +44,8 @@ def add_libro():
         casa_editrice=casa_editrice, # type: ignore
         isbn=isbn, # type: ignore
         categoria_id=categoria_id, # type: ignore
-        posizione=posizione # type: ignore  
+        posizione=posizione, # type: ignore  
+        prefazione=prefazione # type: ignore
     )    
     db.session.add(new_libro)
     db.session.commit()
@@ -61,22 +63,22 @@ def get_libro_by_titolo(titolo):
 def update_libro(id):
     libro = get_by_id(id) # Cerca l'utente per ID
 
-     # Aggiorna i campi dell'utente
-    
-    libro.titolo=request.form['titolo']  # type: ignore
-    libro.autore_id=request.form['autore_hidden']# type: ignore
-    libro.casa_editrice=request.form['casa_editrice'] # type: ignore
-    libro.isbn=request.form['isbn'] # type: ignore
-    libro.categoria_id=request.form['categoria_id'] # type: ignore
+     # Aggiorna i campi dell'utente    
+    libro.titolo=request.form['titolo'] 
+    libro.autore_id=request.form['autore_hidden']
+    libro.casa_editrice=request.form['casa_editrice'] 
+    libro.isbn=request.form['isbn'] 
+    libro.categoria_id=request.form['categoria_id'] 
     libro.posizione=request.form['posizione']
+    libro.prefazione=request.form['prefazione']
     
     db.session.commit()  # Salva le modifiche nel database
     flash("Libro aggiornato con successo!", "success")
     return redirect(url_for('libri.get_libri'))
 
 def delete_libro(id):
-    libro = get_by_id(id)
 
+    libro = get_by_id(id)
     db.session.delete(libro)  # Elimina l'utente dal database
     db.session.commit()
 

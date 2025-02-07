@@ -8,8 +8,8 @@ libri_bp = Blueprint('libri',__name__)
 @libri_bp.route('/libri', methods=['GET'])
 # ritorna tutti i libri nel db
 def get_libri():
-    libri = get_all_libri()
-   
+
+    libri = get_all_libri()   
     return render_template('elenco_libri.html',libri=libri)
 
 @libri_bp.route('/add_libro', methods=['POST'])
@@ -19,9 +19,9 @@ def aggiungi_libro():
 @libri_bp.route('/libro/<int:libro_id>/edit', methods=['GET'])
 #cerca libro per id e ritorna la pagina di modifica
 def edit_libro(libro_id):
+
     libro = get_by_id(libro_id)  # Recupera il libro dal database
-    categorie = get_all_categorie()
-    
+    categorie = get_all_categorie()    
     return render_template('edit_libro.html', libro=libro, categorie=categorie)
   
 
@@ -30,7 +30,6 @@ def edit_libro(libro_id):
 def get_libro_by_id(libro_id):
    
     libro = get_by_id(libro_id)
-
     return render_template('dettaglio_libro.html',libro=libro)
 
 

@@ -46,6 +46,7 @@ class Libri(db.Model):
     isbn = db.Column(db.String(13))
     categoria_id = db.Column(db.Integer, db.ForeignKey('categorie.id'), nullable=False)
     posizione = db.Column(db.String(20))
+    prefazione = db.Column(db.String(5000))
 
     def __repr__(self):
         return f'<Libri {self.titolo}>'
@@ -58,6 +59,7 @@ class Libri(db.Model):
             "casa_editrice": self.casa_editrice,
             "isbn": self.isbn,
             "categoria_id": self.categoria_id,
-            "posizione": self.posizione
+            "posizione": self.posizione,
+            "prefazione" : self.prefazione
         }
 

@@ -5,15 +5,16 @@
 <h1 class="mb-4">Dettaglio</h1>
 
 <div class="container">
-    <div class="book">
-        <h1 class="text-center">{{libro.titolo}}</h1>
-        <p class="card-text"><strong>Autore: </strong>{{ libro.autore.nome}} {{ libro.autore.cognome}}</p>
-        <p class="card-text"><strong>Casa editrice: </strong>{{libro.casa_editrice}}</p>
-        <p class="card-text"><strong>ISBN: </strong>{{libro.isbn}}</p>
-        <p class="card-text"><strong>Categoria: </strong>{{libro.categoria.categoria}}</p>
-        <p class="card-text"><strong>Posizione:</strong>{{libro.posizione}}</p>
-        <a href="/api/libri" class="btn btn-primary">Chiudi</a>
-    </div>
+  <div class="book">
+    <h1 class="text-center">{{libro.titolo}}</h1>
+    <p class="card-text"><strong>Autore: </strong>{{ libro.autore.nome}} {{ libro.autore.cognome}}</p>
+    <p class="card-text"><strong>Casa editrice: </strong>{{libro.casa_editrice}}</p>
+    <p class="card-text"><strong>ISBN: </strong>{{libro.isbn}}</p>
+    <p class="card-text"><strong>Categoria: </strong>{{libro.categoria.categoria}}</p>
+    <p class="card-text"><strong>Posizione:</strong>{{libro.posizione}}</p>
+    <p class="card-text"><strong>Prefazione:</strong>{{libro.prefazione}}</p>
+    <a href="/api/libri" class="btn btn-primary">Chiudi</a>
   </div>
+</div>
 
 {% endblock %}

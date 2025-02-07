@@ -30,11 +30,14 @@
                 categoria.categoria }}</option>
             {% endfor %}
         </select>
-
     </div>
     <div class="mb-3">
         <label for="posizione" class="form-label">Posizione</label>
         <input type="text" class="form-control" id="posizione" name="posizione" value="{{ libro.posizione }}">
+    </div>
+    <div class="mb-3">
+        <label for="prefazione" class="form-label">Prefazione</label>
+        <textarea class="form-control" id="prefazione" name="prefazione">{{ libro.prefazione }}</textarea>
     </div>
 
     <button type="submit" class="btn btn-success">Salva</button>
