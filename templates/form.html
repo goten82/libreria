@@ -53,10 +53,20 @@
                 </ul>
             </div>
         </div>
+        {% if current_user.is_authenticated %}
+        <p>Benvenuto, {{ current_user.username }}!
+            <a class="navbar-brand" href="{{ url_for('utenti.logout') }}">Logout</a>
+        </p>
+        {% else %}
+        <a class="navbar-brand" href="{{ url_for('utenti.login') }}">Login</a>
+        <a class="navbar-brand" href="{{ url_for('utenti.register') }}">Registrati</a>
+        {% endif %}
     </nav>
     <!-- Content Section -->
     <div class="container mt-4">
         {% block content %}
+
+
         <h1>
             La mia Libreria domestica
         </h1>
