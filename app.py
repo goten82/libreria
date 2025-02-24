@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from functools import wraps
+from flask import Flask, render_template, abort
 import os
 from models.models import db,Utente
 from routes.libri import libri_bp
@@ -6,7 +7,8 @@ from routes.categorie import categorie_bp
 from routes.auth import utenti_bp
 from services.autori_service import get_all_autori
 from services.categorie_service import get_all_categorie
-from flask_login import LoginManager, login_required
+from services.utenti_service import get_all_utenti
+from flask_login import LoginManager, login_required, current_user
 
 
 login_manager = LoginManager()
@@ -29,6 +31,22 @@ login_manager.init_app(app) # type: ignore
 app.register_blueprint(libri_bp,url_prefix= '/api')
 app.register_blueprint(categorie_bp,url_prefix= '/api')
 app.register_blueprint(utenti_bp,url_prefix= '/api')
+
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated or not current_user.is_admin:
+            abort(403)  # Errore 403: Accesso negato
+        return f(*args, **kwargs)
+    return decorated_function
+
+def bibliotecario_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated or not current_user.is_bibliotecario:
+            abort(403)
+        return f(*args, **kwargs)
+    return decorated_function
   
 @app.route('/home')
 @login_required
@@ -45,10 +63,12 @@ def libri():
 @app.route('/utenti')
 @login_required
 def utenti():
-    return render_template('utenti.html')
+    utenti = get_all_utenti()
+    return render_template('utenti.html', utenti=utenti)
 
 @app.route('/cerca')
 @login_required
+@bibliotecario_required
 def cerca():
     return render_template('cerca.html')
 

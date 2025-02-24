@@ -1,3 +1,30 @@
 {% extends "form.html" %}
+{% block content %}
 
-<h1>Pagina in costruzione</h1>
+<h1>Elenco utenti</h1>
+
+<table class="table table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>user</th>
+            <th>Email</th>
+            <th>Ruolo</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for utente in utenti %}
+        <tr>
+            <td>{{ utente.id }}</td>
+            <td>{{ utente.username }}</td>
+            <td>{{ utente.email }}</td>
+            <td>{{ utente.ruolo }}</td>
+            <td>
+                ..
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

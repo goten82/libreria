@@ -71,6 +71,7 @@ class Utente(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(200), nullable=False)
+    ruolo = db.Column(db.String(50), nullable=False, default="utente")  # "admin" | "bibliotecario" | "utente"
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -93,4 +94,12 @@ class Utente(db.Model):
     @property
     def is_anonymous(self):
         return False
+
+    @property
+    def is_admin(self):
+        return self.ruolo == "admin"
+
+    @property
+    def is_bibliotecario(self):
+        return self.ruolo == "bibliotecario"
 
