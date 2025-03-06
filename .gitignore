@@ -15,3 +15,11 @@ routes/__pycache__/categorie.cpython-311.pyc
 services/__pycache__/libri_service.cpython-311.pyc
 services/__pycache__/categorie_service.cpython-311.pyc
 services/__pycache__/libri_service.cpython-311.pyc
+models/__pycache__/models.cpython-313.pyc
+routes/__pycache__/auth.cpython-313.pyc
+routes/__pycache__/categorie.cpython-313.pyc
+routes/__pycache__/libri.cpython-313.pyc
+services/__pycache__/autori_service.cpython-313.pyc
+services/__pycache__/categorie_service.cpython-313.pyc
+services/__pycache__/libri_service.cpython-313.pyc
+services/__pycache__/utenti_service.cpython-313.pyc
